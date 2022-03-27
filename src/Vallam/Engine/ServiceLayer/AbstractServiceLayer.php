@@ -14,7 +14,14 @@ abstract class AbstractServiceLayer
 
     public function __construct()
     {
+        $this->registerCoreEvents();
+        $this->registerEvents();
         $this->handle();
+    }
+
+    private function registerCoreEvents()
+    {
+        //Register Core Events
     }
 
     public function getName()
@@ -71,6 +78,8 @@ abstract class AbstractServiceLayer
         $this->incomingRequest = $requestURI;
         return $this;
     }
+
+    abstract protected function registerEvents();
 
     abstract public function response();
 

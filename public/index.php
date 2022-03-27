@@ -13,5 +13,6 @@ $hull->setIndexPath(__DIR__)
     ->setVendorPath(__DIR__ . '/../vendor')
     ->setBasePath(__DIR__ . '/..')
     ->startLogger()
+    ->startEventDispatcher()
     ->setHTTPServiceLayer(HTTP::class, new RequestContext(), $_SERVER['REQUEST_URI'])
     ->boot();

@@ -4,12 +4,13 @@
 namespace Vallam\Controller;
 
 
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 class TestController
 {
-    public function index()
+    public function index(Request $request)
     {
-        return new Response('Nope, this is not a leap year.');
+        return 'Here with Test Controller';
     }
 }

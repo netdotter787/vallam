@@ -24,4 +24,9 @@ class Console extends AbstractServiceLayer
     {
         // TODO: Implement handle() method.
     }
+
+    protected function registerEvents()
+    {
+        // TODO: Implement registerEvents() method.
+    }
 }

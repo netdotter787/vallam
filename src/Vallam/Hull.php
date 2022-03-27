@@ -1,6 +1,8 @@
 <?php
 namespace Vallam;
 
+use Symfony\Component\DependencyInjection\ContainerBuilder;
+use Symfony\Component\EventDispatcher\EventDispatcher;
 use Symfony\Component\Routing\RequestContext;
 use Vallam\Configurations\Manager;
 use Vallam\Engine\AbstractVallamSingleton;
@@ -13,6 +15,15 @@ class Hull extends AbstractVallamSingleton
     private string $indexPath;
     private string $basePath;
     private string $vendorPath;
+    /**
+     * @var EventDispatcher
+     */
+    private EventDispatcher $eventDispatcher;
+
+    /**
+     * @var ContainerBuilder
+     */
+    private ContainerBuilder $container;
 
     /**
      * @return string
@@ -81,6 +92,7 @@ class Hull extends AbstractVallamSingleton
     protected function __boot()
     {
         Manager::getInstance()->hoistManager();
+        $this->container = new ContainerBuilder();
     }
 
     public function startLogger()
@@ -88,6 +100,17 @@ class Hull extends AbstractVallamSingleton
         $this->logger = new Logger();
         $this->logger->debug("Booted Hull");
         return $this;
+    }
+
+    public function startEventDispatcher()
+    {
+        $this->eventDispatcher = new EventDispatcher();
+        return $this;
+    }
+
+    public function getEventDispatcher()
+    {
+        return $this->eventDispatcher;
     }
 
     public function boot()
@@ -109,7 +132,7 @@ class Hull extends AbstractVallamSingleton
 
     public function __destruct()
     {
-        //$this->serviceLayer->response();
+
     }
 
     public function getLogger()

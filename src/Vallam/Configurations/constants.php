@@ -11,3 +11,5 @@ define('APP_FRAMEWORK_CONFIG', 'app_config');
 define('DEFAULT_LOG_PATH', 'storage/logs/default.log');
 define('DEFAULT_LOGGER', 'file');
 define('DEFAULT_LOG_CHANNEL', 'app');
+
+define("VLM_HTTP_CACHE", 'storage/cache');
